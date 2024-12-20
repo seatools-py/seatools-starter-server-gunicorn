@@ -1,0 +1,1 @@
+from .wsgiapp import WSGIApplication

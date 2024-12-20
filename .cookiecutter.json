@@ -1,0 +1,14 @@
+{
+    "_checkout": null,
+    "_output_dir": "D:\\Codes\\Project\\seatools-py",
+    "_repo_dir": "cookiecutter-seatools-starter-python",
+    "_template": "cookiecutter-seatools-starter-python",
+    "author": "seatools-py",
+    "copyright_year": "2024",
+    "email": "521274311@qq.com",
+    "friendly_name": "Seatools gunicorn server starter.",
+    "license": "MIT",
+    "project_name": "seatools-starter-server-gunicorn",
+    "simple_name": "gunicorn",
+    "version": "1.0.0"
+}
