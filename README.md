@@ -26,6 +26,7 @@ seatools:
       app: xxx.fastapi.app:app
       bind: ':8000'
       workers: 2
-      # ...
+      worker_class: gevent
+      ...
     
 ```
