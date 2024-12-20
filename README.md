@@ -24,9 +24,8 @@ seatools:
     gunicorn:
       # 配置该参数后启动参数可忽略app参数, 配置与官方gunicorn.app.wsgiapp.run一致, 若安装 seatools-starter-web-fastapi可省略app配置 
       app: xxx.fastapi.app:app
-      host: 127.0.0.1
-      port: 8000
-      workers: 1
+      bind: ':8000'
+      workers: 2
       # ...
     
 ```
