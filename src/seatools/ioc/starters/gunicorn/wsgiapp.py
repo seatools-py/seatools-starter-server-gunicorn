@@ -1,3 +1,5 @@
+import importlib
+
 from gunicorn.app.wsgiapp import WSGIApplication as GunicornWSGIApplication
 from gunicorn.config import Setting, validate_string
 from seatools.ioc.config import cfg
@@ -9,15 +11,17 @@ class WSGIApplication(GunicornWSGIApplication):
         super().init(parser, opts, args)
         if len(args) > 0:
             # ioc app run
-            self.cfg.set('ioc_app', args[0])
-            args[0]()
+            ioc_app_path = args[0]
+            module_name, func_name = ioc_app_path.split(':')
+            self.ioc_app = getattr(importlib.import_module(module_name), func_name)
+            self.ioc_app()
             app =  args[1] if len(args)>1 else  (((cfg().get('seatools') or {}).get('server') or {}).get('gunicorn') or {}).get('app', 'seatools.ioc.server.app:asgi_app')
             self.cfg.set("default_proc_name", app)
             self.app_uri = app
 
     def load(self):
-        if self.cfg.ioc_app is not None:
-            self.cfg.ioc_app()
+        if hasattr(self, 'ioc_app'):
+            self.ioc_app()
         super().load()
 
 
