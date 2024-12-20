@@ -22,7 +22,7 @@ def start():
 seatools:
   server:
     gunicorn:
-      # 配置该参数后启动参数可忽略app参数, 配置与官方gunicorn.app.wsgiapp.run一致, 若安装 seatools-starter-web-fastapi可省略app配置 
+      # 配置该参数后启动参数可忽略app参数, 配置与官方gunicorn.app.wsgiapp.run一致, 若安装 seatools-starter-web-* 可省略app配置 
       app: xxx.fastapi.app:app
       bind: ':8000'
       workers: 2
